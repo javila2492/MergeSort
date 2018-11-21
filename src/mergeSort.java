@@ -20,15 +20,34 @@ public class mergeSort
 
     private static void merge(int[] arr, int left, int mid, int right, int[] temp)
     {
-        for(int i = left; i < mid; i++)
+        int i = left;
+        int j = mid + 1;
+        int k = left;
+        while(i <= mid && j <= right)
         {
-            if (arr[i] > arr[mid + i - 1])
+            if(arr[i] < arr[j])
             {
-                int a = arr[i];
-                int b = arr[mid + i];
-                arr[i] = b;
-                arr[mid + i] = a;
+                temp[k] = arr[i];
+                i++;
+            }
+            else
+            {
+                temp[k] = arr[j];
+                j++;
             }
         }
+        while(i <= mid)
+        {
+            temp[k] = arr[i];
+            i++;
+            k++;
+        }
+        while(j <= right)
+        {
+            temp[k] = arr[j];
+            j++;
+            k++;
+        }
+        System.arraycopy(temp, 0, arr, 0, temp.length);
     }
 }
