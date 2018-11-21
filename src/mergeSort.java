@@ -48,6 +48,7 @@ public class mergeSort
             j++;
             k++;
         }
-        System.arraycopy(temp, 0, arr, 0, temp.length);
+        for(int p = left; p <= right; p++)
+            arr[p] = temp[p];
     }
 }
